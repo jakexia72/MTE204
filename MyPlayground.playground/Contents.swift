@@ -1,5 +1,6 @@
 import UIKit
 
+// Bracketting Methods
 func bisectionMethod(iterations: Int, guessXl: Double, guessXu: Double, f: (Double)->Double, trueVal: Double)->String{
     var xl:Double = guessXl;
     var xu:Double = guessXu;
@@ -33,6 +34,7 @@ func bisectionMethod(iterations: Int, guessXl: Double, guessXu: Double, f: (Doub
     return ("Finsished \(iterations) iteration\(iterations > 1 ? "s" : "")")
 }
 
+// Open Methods
 func simpleFixedPoint(iterations: Int, guess: Double, g: (Double)->Double){
     var xr = guess;
     var oldXr = xr;
@@ -67,12 +69,11 @@ func secant(iterations: Int, guessX0: Double, guessX1: Double, f: (Double)->Doub
         let temp  = x1
         x1 = x0 - (f(x0) * m)
         x0 = temp
-//        if (abs(round((x1 - x0) * 1000000 / x1) / 10000) < 0.000000000001){
-//            return
-//        }
     }
 }
 
+
+// BEGIN PRACTICE QUESTIONS =================
 func parachutist_c(_ c: Double)->Double{
     let g = 9.81
     let m = 82.0 //kg
