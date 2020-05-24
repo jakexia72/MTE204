@@ -1,7 +1,7 @@
 import UIKit
 
 // Bracketting Methods
-func bisectionMethod(iterations: Int, guessXl: Double, guessXu: Double, f: (Double)->Double, trueVal: Double)->String{
+func bisectionMethod(iterations: Int, guessXl: Double, guessXu: Double, f: (Double)->Double)->String{
     var xl:Double = guessXl;
     var xu:Double = guessXu;
     
@@ -13,7 +13,7 @@ func bisectionMethod(iterations: Int, guessXl: Double, guessXu: Double, f: (Doub
     var rootsArray:[Double] = []
     
     if (f(xl)*f(xu)) > 0.0 {
-        print(" f(xl)= \(f(xl))   f(xl)= \(f(xu))")
+        print(" f(xl)= \(f(xl))   f(xu)= \(f(xu))")
         return "Not bracketting root, try again"
     }
     
@@ -135,35 +135,103 @@ func sixPoint4p(_ x: Double)->Double{
 // guess = 2 ->  x3=1.479774541816106  Ea= %0.0003
 // guess = 6 ->  x3=6.305897680394437  Ea= %0.0
 
+//
+//func six19(_ x: Double)->Double{
+//    return .pi*3*x*x - (.pi/3)*x*x*x - 30
+//}
+//
+//func six19p(_ x: Double)->Double{
+//    return  .pi*6*x - .pi*x*x
+//}
 
-func six19(_ x: Double)->Double{
-    return .pi*3*x*x - (.pi/3)*x*x*x - 30
-}
-
-func six19p(_ x: Double)->Double{
-    return  .pi*6*x - .pi*x*x
-}
-
-//newtonRaphson(iterations: 3, guess: 3, f: six19, fp: six19p)
+//newtonRaphson(iterations: 5, guess: 3, f: six19, fp: six19p)
 //0   x0=3.0   x1=2.0610329539459693   Ea= %45.5581
 //1   x1=2.0610329539459693   x2=2.0270420656974903   Ea= %1.6769
 //2   x2=2.0270420656974903   x3=2.026905730555795   Ea= %0.0067
 //3   x3=2.026905730555795   x4=2.0269057283100134   Ea= %0.0
+//
 
-
-func six11(_ x: Double)->Double{
-    return e(-0.5 * x) * (4 - x) - 2
-}
-
-func six11p(_ x: Double)->Double{
-    return  -0.5 * e(-0.5 * x) * (4 - x) - e(-0.5 * x)
-}
+//func six11(_ x: Double)->Double{
+//    return e(-0.5 * x) * (4 - x) - 2
+//}
+//
+//func six11p(_ x: Double)->Double{
+//    return  -0.5 * e(-0.5 * x) * (4 - x) - e(-0.5 * x)
+//}
 
 func e(_ x: Double)->Double{
     return pow(M_E, x)
 }
+//
+//newtonRaphson(iterations: 50, guess: 6, f: six11, fp: six11p)
+//// guess 2 ->     5   x5=0.8857088019940231   x6=0.8857088020047771   Ea= %0.0
+//// guess 6 -> Does not work, fp = 0
+//// guess 8 -> Does not work, fp is near zero and sends x away forever.
 
-newtonRaphson(iterations: 50, guess: 6, f: six11, fp: six11p)
-// guess 2 ->     5   x5=0.8857088019940231   x6=0.8857088020047771   Ea= %0.0
-// guess 6 -> Does not work, fp = 0
-// guess 8 -> Does not work, fp is near zero and sends x away forever. 
+//func r(_ R: Double)->Double{
+//    return e(-0.005*R) * cos(sqrt(2000 - 0.01 * R * R) * 0.05) - 0.01
+//}
+
+//print(bisectionMethod(iterations: 25, guessXl: 0, guessXu: 400, f: r, trueVal: 0))
+
+//func g(_ f: Double)->Double{
+//    let insideLog = (0.0015 * pow(10,-3) / (3.7 * 0.005)) + (2.51 / (13743 * sqrt(f)))
+//    return (1 / sqrt(f)) + (2 * log10(insideLog))
+//}
+//print(bisectionMethod(iterations: 25, guessXl: 0.008, guessXu: 0.08, f: g))
+//
+//func g2(_ f: Double)->Double{
+//    let insideLog = (0.0015 * pow(10,-3) / (3.7 * 0.005)) + (2.51 / (13743 * sqrt(f)))
+//    return 0.25 / pow(log10(insideLog),2)
+//}
+//simpleFixedPoint(iterations: 100, guess: 0.008, g: g2)
+
+
+//func eight4(_ t: Double)->Double{
+//    return 1 - e(-0.04 * t) + (4/10) * e(-0.04 * t) - 0.93
+//}
+//print(bisectionMethod(iterations: 25, guessXl: 50, guessXu: 55, f: eight4))
+
+
+//func eight39(_ t: Double)->Double{
+//    let u = 2200.0
+//    let m0 = 160000.0
+//    let q = 2680.0
+//    let g = 9.81
+//    return u * log(m0 / (m0 - q * t)) - g * t - 1000
+//}
+//print(bisectionMethod(iterations: 25, guessXl: 10, guessXu: 50, f: eight39))
+//print(eight39(26.09375))
+
+
+//func quiz1_5(_ H: Double)->Double{
+//    let g = 9.81
+//    let L = 4.0
+//    let v = 5.0
+//    let t = 2.5
+//
+//    return sqrt(2*g*H)*tanh((sqrt(2*g*H)*t)/(2*L)) - v
+//}
+//
+//bisectionMethod(iterations: 15, guessXl: 0, guessXu: 2, f: quiz1_5)
+
+
+let a = 1.0
+let b = 16.05
+let c = 88.75
+let d = 192.0375
+let f = 116.35
+
+
+func quiz1_7(_ x: Double)->Double{
+    return pow(x, 5) - 16.05 * pow(x,4) + 88.75 * pow(x,3) - 192.0375 * pow(x,2) + 116.35 * x + 31.6875
+}
+
+func quiz1_7g(_ x: Double)->Double{
+    return 5 * pow(x, 4) - 16.05 * 4 * pow(x,3) + 88.75 * 3 * pow(x,2) - 192.0375 * 2 * pow(x,1) + 116.35
+}
+
+newtonRaphson(iterations: 9, guess: 0.5825, f: quiz1_7, fp: quiz1_7g)
+
+
+
