@@ -127,6 +127,15 @@ extension Matrix{
             }
         return newMatrix;
     }
+     func transpose() -> Matrix{
+        var newMatrix = Matrix(numberOfRows: colsCount, numberOfCols: rowsCount)
+        for i in 0..<newMatrix.rowsCount{
+            for j in 0..<newMatrix.colsCount{
+                newMatrix.data[i][j] = data[j][i]
+            }
+        }
+        return newMatrix
+    }
 }
 
 
@@ -160,7 +169,7 @@ var myMatrix4 = Matrix([
 
 print("test")
 print((2 * myMatrix2))
-myMatrix2.swapRows(0, 3)
+//myMatrix2.swapRows(0, 3)
 print(myMatrix.isSquare);
 print(myMatrix.largestVal())
 
@@ -169,5 +178,8 @@ print(myMatrix3)
 
 myMatrix4.reorderDiagonally()
 print(myMatrix4)
+
+print(myMatrix2)
+print(myMatrix2.transpose())
 
 print(myMatrix.indexOfLargestMagnitudeElementInCol(3, startAtRow: 1));
