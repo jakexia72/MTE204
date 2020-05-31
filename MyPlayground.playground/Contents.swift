@@ -204,16 +204,16 @@ func e(_ x: Double)->Double{
 //print(eight39(26.09375))
 
 
-//func quiz1_5(_ H: Double)->Double{
-//    let g = 9.81
-//    let L = 4.0
-//    let v = 5.0
-//    let t = 2.5
-//
-//    return sqrt(2*g*H)*tanh((sqrt(2*g*H)*t)/(2*L)) - v
-//}
-//
-//bisectionMethod(iterations: 15, guessXl: 0, guessXu: 2, f: quiz1_5)
+func quiz1_5(_ H: Double)->Double{
+    let g = 9.81
+    let L = 4.0
+    let v = 5.0
+    let t = 2.5
+
+    return sqrt(2*g*H)*tanh((sqrt(2*g*H)*t)/(2*L)) - v
+}
+
+bisectionMethod(iterations: 15, guessXl: 0, guessXu: 2, f: quiz1_5)
 
 
 let a = 1.0
